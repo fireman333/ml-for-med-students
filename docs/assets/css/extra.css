@@ -488,3 +488,55 @@ img.pixel { image-rendering: pixelated; image-rendering: -moz-crisp-edges; }
   padding-top: .4rem;
   padding-bottom: .4rem;
 }
+
+/* RWD: keep wide formulas and tab label rows inside the column on phones. */
+.md-typeset .arithmatex,
+.md-typeset .katex-display {
+  position: relative;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.md-typeset .tabbed-labels {
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+@media screen and (max-width: 44.984375em) {
+  .md-content__inner > .tabbed-set .tabbed-labels {
+    max-width: 100%;
+    margin: 0;
+  }
+}
+
+/* ---------- emphasis pass: bigger, crisper pixel labels ----------
+   Pixel fonts blur under synthetic bold, so "bold" is a 1px same-colour hard
+   shadow. Small labels go 11px -> 16.5px (= 33 device px on 2x screens, a
+   clean 3x of the 11px design grid). */
+:root { --pixel-bold: 1px 0 0 currentColor; }
+
+.md-header__title,
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3,
+.md-typeset .md-button,
+.md-typeset .grid.cards > ul > li > p:first-child strong {
+  text-shadow: var(--pixel-bold);
+  letter-spacing: .5px;
+}
+.md-typeset h1 { font-size: 38.5px; line-height: 1.3; }
+
+.md-tabs__link,
+.md-typeset .md-button,
+.md-typeset .admonition-title,
+.md-typeset details:not(.question) > summary,
+.md-typeset .tabbed-labels > label,
+.md-nav__item--section > .md-nav__link,
+.md-footer__title,
+.demo-box button,
+.demo-box select {
+  font-size: 16.5px;
+  line-height: 1.6;
+}
+.md-typeset .md-button { padding: .45em 1.1em; }
+.md-tabs__link { opacity: 1; }
