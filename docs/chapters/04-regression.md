@@ -10,7 +10,7 @@
     - 分辨「為了預測」與「為了解釋」的迴歸，知道勝算比該怎麼謹慎解讀
 
 <div class="nb-links" markdown>
-[:simple-googlecolab: 在 Colab 開啟](https://colab.research.google.com/github/GITHUB_REPO_PLACEHOLDER/blob/main/docs/notebooks/ch04_regression.ipynb){ .md-button .md-button--primary }
+[:simple-googlecolab: 在 Colab 開啟](https://colab.research.google.com/github/fireman333/ml-for-med-students/blob/main/docs/notebooks/ch04_regression.ipynb){ .md-button .md-button--primary }
 [:material-download: 下載 Notebook](../notebooks/ch04_regression.ipynb){ .md-button }
 </div>
 

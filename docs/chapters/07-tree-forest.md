@@ -10,7 +10,7 @@
     - 分辨兩種特徵重要性的差別，避免把「模型常用」讀成「造成疾病」
 
 <div class="nb-links" markdown>
-[:simple-googlecolab: 在 Colab 開啟](https://colab.research.google.com/github/GITHUB_REPO_PLACEHOLDER/blob/main/docs/notebooks/ch07_tree-forest.ipynb){ .md-button .md-button--primary }
+[:simple-googlecolab: 在 Colab 開啟](https://colab.research.google.com/github/fireman333/ml-for-med-students/blob/main/docs/notebooks/ch07_tree-forest.ipynb){ .md-button .md-button--primary }
 [:material-download: 下載 Notebook](../notebooks/ch07_tree-forest.ipynb){ .md-button }
 </div>
 

@@ -102,6 +102,7 @@
 | 標題 | 作者／機構 | 授權 | 用途 | 章節 |
 |---|---|---|---|---|
 | [Plotly.js](https://github.com/plotly/plotly.js) 2.35.2 | Plotly | MIT | 自寫互動 demo 的繪圖（全站載入） | 04、05、06、10 |
+| [Cubic 11 俐方體 11 號](https://github.com/ACh-K/Cubic-11) v1.500 | ACh-K（衍生自 JF Dot M+H 12 / M+ BITMAP FONTS） | SIL OFL-1.1（授權檔隨站附於 `assets/fonts/Cubic_11_OFL.txt`） | 站名、導覽列、標題、按鈕的像素字型（自架 woff2） | 全站 |
 | [MkDocs](https://www.mkdocs.org/) 1.6.1 | MkDocs 社群 | BSD-2-Clause（pip 套件 metadata） | 站台建置 | 全站 |
 | [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) 9.7.7 | Martin Donath | MIT（pip 套件 metadata） | 站台主題 | 全站 |
 | [KaTeX](https://katex.org/) 0.16.11 | KaTeX 社群 | MIT（未逐一驗證） | 數學式渲染（CDN） | 全站 |

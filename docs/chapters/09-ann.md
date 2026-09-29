@@ -10,7 +10,7 @@
     - 判斷什麼時候值得用神經網路、什麼時候樹模型或邏輯迴歸就夠了
 
 <div class="nb-links" markdown>
-[:simple-googlecolab: 在 Colab 開啟](https://colab.research.google.com/github/GITHUB_REPO_PLACEHOLDER/blob/main/docs/notebooks/ch09_ann.ipynb){ .md-button .md-button--primary }
+[:simple-googlecolab: 在 Colab 開啟](https://colab.research.google.com/github/fireman333/ml-for-med-students/blob/main/docs/notebooks/ch09_ann.ipynb){ .md-button .md-button--primary }
 [:material-download: 下載 Notebook](../notebooks/ch09_ann.ipynb){ .md-button }
 </div>
 

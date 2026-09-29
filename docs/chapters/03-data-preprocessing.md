@@ -10,7 +10,7 @@
     - 用「先切分、再前處理」與 `Pipeline`＋`ColumnTransformer` 避免資料洩漏
 
 <div class="nb-links" markdown>
-[:simple-googlecolab: 在 Colab 開啟](https://colab.research.google.com/github/GITHUB_REPO_PLACEHOLDER/blob/main/docs/notebooks/ch03_data-preprocessing.ipynb){ .md-button .md-button--primary }
+[:simple-googlecolab: 在 Colab 開啟](https://colab.research.google.com/github/fireman333/ml-for-med-students/blob/main/docs/notebooks/ch03_data-preprocessing.ipynb){ .md-button .md-button--primary }
 [:material-download: 下載 Notebook](../notebooks/ch03_data-preprocessing.ipynb){ .md-button }
 </div>
 

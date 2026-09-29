@@ -10,7 +10,7 @@
     - 把分群結果和臨床結果做事後對照，並說明為什麼「分群不等於診斷」
 
 <div class="nb-links" markdown>
-[:simple-googlecolab: 在 Colab 開啟](https://colab.research.google.com/github/GITHUB_REPO_PLACEHOLDER/blob/main/docs/notebooks/ch08_kmeans.ipynb){ .md-button .md-button--primary }
+[:simple-googlecolab: 在 Colab 開啟](https://colab.research.google.com/github/fireman333/ml-for-med-students/blob/main/docs/notebooks/ch08_kmeans.ipynb){ .md-button .md-button--primary }
 [:material-download: 下載 Notebook](../notebooks/ch08_kmeans.ipynb){ .md-button }
 </div>
 

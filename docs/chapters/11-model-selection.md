@@ -10,7 +10,7 @@
     - 用超參數搜尋、集成學習提升效能，並知道外部驗證為什麼不能省
 
 <div class="nb-links" markdown>
-[:simple-googlecolab: 在 Colab 開啟](https://colab.research.google.com/github/GITHUB_REPO_PLACEHOLDER/blob/main/docs/notebooks/ch11_model-selection.ipynb){ .md-button .md-button--primary }
+[:simple-googlecolab: 在 Colab 開啟](https://colab.research.google.com/github/fireman333/ml-for-med-students/blob/main/docs/notebooks/ch11_model-selection.ipynb){ .md-button .md-button--primary }
 [:material-download: 下載 Notebook](../notebooks/ch11_model-selection.ipynb){ .md-button }
 </div>
 

@@ -10,7 +10,7 @@
     - 把降維步驟放進 Pipeline，避免資料洩漏把準確率灌水
 
 <div class="nb-links" markdown>
-[:simple-googlecolab: 在 Colab 開啟](https://colab.research.google.com/github/GITHUB_REPO_PLACEHOLDER/blob/main/docs/notebooks/ch10_dimensionality-reduction.ipynb){ .md-button .md-button--primary }
+[:simple-googlecolab: 在 Colab 開啟](https://colab.research.google.com/github/fireman333/ml-for-med-students/blob/main/docs/notebooks/ch10_dimensionality-reduction.ipynb){ .md-button .md-button--primary }
 [:material-download: 下載 Notebook](../notebooks/ch10_dimensionality-reduction.ipynb){ .md-button }
 </div>
 

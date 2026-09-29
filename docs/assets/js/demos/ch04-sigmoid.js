@@ -75,7 +75,7 @@
       { x: [xMin, xMax], y: [t, t], mode: "lines", name: "閾值", line: { dash: "dash", color: c.fg, width: 1.5 } },
     ], {
       paper_bgcolor: "rgba(0,0,0,0)", plot_bgcolor: "rgba(0,0,0,0)", font: { color: c.fg }, height: 330,
-      margin: { l: 55, r: 15, t: 20, b: 45 }, legend: { orientation: "h", y: -0.22 },
+      margin: { l: 55, r: 15, t: 20, b: 95 }, legend: { orientation: "h", x: 0, xanchor: "left", y: -0.32, yanchor: "top" },
       xaxis: { title: "模擬生物標記（任意單位）", gridcolor: c.grid, zeroline: false, range: [xMin, xMax] },
       yaxis: { title: "惡性機率", gridcolor: c.grid, range: [-0.1, 1.1] },
       shapes: [{ type: "rect", x0: cx, x1: xMax, y0: -0.1, y1: 1.1, fillcolor: "rgba(244,81,30,0.08)", line: { width: 0 } }],

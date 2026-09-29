@@ -10,7 +10,7 @@
     - 分辨「p 值」與「效果大小」，知道未達統計顯著不等於沒有差異
 
 <div class="nb-links" markdown>
-[:simple-googlecolab: 在 Colab 開啟](https://colab.research.google.com/github/GITHUB_REPO_PLACEHOLDER/blob/main/docs/notebooks/ch02_python-toolkit.ipynb){ .md-button .md-button--primary }
+[:simple-googlecolab: 在 Colab 開啟](https://colab.research.google.com/github/fireman333/ml-for-med-students/blob/main/docs/notebooks/ch02_python-toolkit.ipynb){ .md-button .md-button--primary }
 [:material-download: 下載 Notebook](../notebooks/ch02_python-toolkit.ipynb){ .md-button }
 </div>
 

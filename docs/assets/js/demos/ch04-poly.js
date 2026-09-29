@@ -89,9 +89,9 @@
   function baseLayout(title, xt, yt) {
     const c = colors();
     return { title: { text: title, font: { size: 14 } }, paper_bgcolor: "rgba(0,0,0,0)", plot_bgcolor: "rgba(0,0,0,0)",
-      font: { color: c.fg }, margin: { l: 55, r: 15, t: 40, b: 45 }, height: 300,
+      font: { color: c.fg }, margin: { l: 55, r: 15, t: 40, b: 95 }, height: 340,
       xaxis: { title: xt, gridcolor: c.grid, zeroline: false }, yaxis: { title: yt, gridcolor: c.grid, zeroline: false },
-      legend: { orientation: "h", y: -0.25 } };
+      legend: { orientation: "h", x: 0, xanchor: "left", y: -0.32, yanchor: "top" } };
   }
 
   function draw() {
