@@ -1,0 +1,14 @@
+name = "med-study-rpg-ml-router"
+main = "src/index.js"
+compatibility_date = "2026-05-01"
+
+# Reverse-proxy the ML intro site (Cloudflare Pages project `med-study-rpg-ml`)
+# under the shared subpath https://med-study-rpg.com/ml. Two patterns so the
+# bare prefix AND everything beneath it reach this Worker.
+routes = [
+  { pattern = "med-study-rpg.com/ml", zone_name = "med-study-rpg.com" },
+  { pattern = "med-study-rpg.com/ml/*", zone_name = "med-study-rpg.com" },
+]
+
+[observability]
+enabled = true

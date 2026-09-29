@@ -1,0 +1,99 @@
+site_name: 醫學生的機器學習入門
+site_description: 給醫學與生醫相關科系學生的 Machine Learning 入門：直覺、圖解、Python 實作與醫學案例
+site_url: https://med-study-rpg.com/ml/
+docs_dir: docs
+exclude_docs: |
+  notebooks/data/
+  notebooks/*.csv
+
+theme:
+  name: material
+  language: zh-TW
+  font:
+    text: Noto Sans TC
+    code: JetBrains Mono
+  # Light-only pixel theme (matches med-study-rpg.com/biostats); colors in extra.css
+  palette:
+    scheme: default
+    primary: custom
+    accent: custom
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - navigation.indexes
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+  icon:
+    logo: material/brain
+
+plugins:
+  - search:
+      lang: [zh, en]
+      separator: '[\s​\-]'
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+extra_javascript:
+  - assets/js/katex-init.js
+  - https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js
+  - https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js
+  - https://cdn.plot.ly/plotly-2.35.2.min.js
+
+extra_css:
+  - https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css
+  - assets/css/extra.css
+
+nav:
+  - 首頁: index.md
+  - 課程章節:
+      - 01 機器學習簡介與環境安裝: chapters/01-intro.md
+      - 02 Python 四大套件實務: chapters/02-python-toolkit.md
+      - 03 資料收集與前處理實戰: chapters/03-data-preprocessing.md
+      - 04 迴歸分析: chapters/04-regression.md
+      - 05 簡單貝氏分類: chapters/05-naive-bayes.md
+      - 06 支援向量機 SVM: chapters/06-svm.md
+      - 07 決策樹與隨機森林: chapters/07-tree-forest.md
+      - 08 K-平均分群: chapters/08-kmeans.md
+      - 09 人工神經網路基礎: chapters/09-ann.md
+      - 10 資料降維: chapters/10-dimensionality-reduction.md
+      - 11 模型選擇與效能提升: chapters/11-model-selection.md
+  - 附錄:
+      - 資料集一覽: appendix/datasets.md
+      - 中英術語對照: appendix/glossary.md
+      - 參考資源與授權: appendix/references.md

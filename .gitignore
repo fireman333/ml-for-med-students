@@ -1,0 +1,12 @@
+.venv/
+site/
+__pycache__/
+.ipynb_checkpoints/
+*.pyc
+.DS_Store
+notebooks/_data_cache/
+docs/notebooks/data/
+dist-deploy/
+deploy/router/.wrangler/
+.venv*/
+research/
