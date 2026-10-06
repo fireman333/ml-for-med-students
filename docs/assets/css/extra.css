@@ -161,47 +161,58 @@ body { background: var(--bg-cream); }
 .md-typeset .headerlink { color: var(--line-strong); }
 .md-typeset .headerlink:hover, .md-typeset :target > .headerlink { color: var(--accent-leaf-ink); }
 
-/* ---------- header / tabs ---------- */
+/* ---------- header / tabs ----------
+   Dark wood header shared with the sister sites (LocalLLMRPG .site-header):
+   --bg-dark ground, 4px wood rule, gold site name. Icons inherit `color`.
+   Contrast on #2d1f1a: cream #f4ecd8 13.5:1, gold #d4a04d 6.8:1 (AA). */
 .md-header {
-  background: var(--bg-paper);
-  color: var(--frame-dark);
-  border-bottom: 2px solid var(--frame-dark);
+  background: var(--bg-dark);
+  color: var(--bg-cream);
+  border-bottom: 4px solid var(--frame-dark);
   box-shadow: none;
 }
 .md-header--shadow { box-shadow: none; }
-.md-header__title { font-size: 22px; }
+.md-header__title { font-size: 22px; color: var(--accent-gold); }
 .md-header__topic:first-child { font-weight: normal; }
+.md-header__button { color: var(--bg-cream); }
+.md-header__button:hover,
+.md-header__button:focus { color: var(--accent-gold); opacity: 1; }
+.md-header__button.md-logo img,
+.md-header__button.md-logo svg { image-rendering: pixelated; }
+.md-header :focus-visible,
+.md-tabs :focus-visible { outline-color: var(--accent-gold); }
 .md-tabs {
-  background: var(--paper-tint);
-  color: var(--frame-dark);
-  border-bottom: 2px solid var(--line-strong);
+  background: var(--bg-dark);
+  color: var(--bg-cream);
+  border-bottom: 4px solid var(--frame-dark);
 }
-.md-tabs__list { padding: 6px 0; }
+.md-tabs__list { padding: 4px 0 6px; }
 .md-tabs__item { height: auto; padding: 0 4px; }
 .md-tabs__link {
   font-size: 11px;
   opacity: 1;
   margin: 0;
   padding: 6px 11px;
-  color: var(--frame-dark);
+  color: var(--bg-cream);
   border: 2px solid transparent;
-  border-radius: 3px;
+  border-radius: 0;
 }
 .md-tabs__link:hover,
-.md-tabs__link:focus { color: var(--ink-strong); border-color: var(--frame-dark); background: var(--bg-paper); }
-.md-tabs__item--active .md-tabs__link {
-  color: var(--ink-strong);
-  background: var(--accent-gold);
-  border-color: var(--frame-dark);
-  box-shadow: 2px 2px 0 var(--frame-dark);
+.md-tabs__link:focus { color: var(--accent-gold); }
+.md-tabs__item--active .md-tabs__link { color: var(--accent-gold); }
+.md-tabs__item--active .md-tabs__link::before {
+  content: "▶";
+  font-size: 11px;
+  margin-right: 4px;
+  vertical-align: 1px;
 }
 
 /* search box in header */
 @media screen and (min-width: 60em) {
   .md-search__form {
     background: var(--paper);
-    border: 2px solid var(--frame-dark);
-    border-radius: 3px;
+    border: 2px solid var(--frame-light);
+    border-radius: 0;
   }
   .md-search__form:hover { background: var(--paper); }
   .md-search__input { color: var(--ink-strong); }
@@ -231,15 +242,15 @@ body { background: var(--bg-cream); }
 .md-nav__item .md-nav__link--active { color: var(--study-ink); font-weight: 700; }
 /* mobile drawer header (uses primary colors) */
 .md-nav--primary .md-nav__title[for="__drawer"] {
-  background: var(--bg-paper);
-  color: var(--frame-dark);
-  border-bottom: 2px solid var(--frame-dark);
+  background: var(--bg-dark);
+  color: var(--accent-gold);
+  border-bottom: 4px solid var(--frame-dark);
   font-size: 22px;
 }
 
 @media screen and (max-width: 76.234375em) {
   .md-nav--primary .md-nav__title { font-size: 22px; background: var(--paper-tint); color: var(--ink-heading); }
-  .md-nav--primary .md-nav__title[for="__drawer"] { background: var(--bg-paper); color: var(--frame-dark); }
+  .md-nav--primary .md-nav__title[for="__drawer"] { background: var(--bg-dark); color: var(--accent-gold); }
 }
 
 /* ---------- code ---------- */
