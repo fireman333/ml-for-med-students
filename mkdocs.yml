@@ -93,6 +93,10 @@ nav:
       - 09 人工神經網路基礎: chapters/09-ann.md
       - 10 資料降維: chapters/10-dimensionality-reduction.md
       - 11 模型選擇與效能提升: chapters/11-model-selection.md
+  - 深度學習篇:
+      - 12 卷積神經網路 CNN: chapters/12-cnn.md
+      - 13 訓練技巧與遷移學習: chapters/13-transfer-learning.md
+      - 15 注意力機制與 Transformer: chapters/15-transformer.md
   - 附錄:
       - 資料集一覽: appendix/datasets.md
       - 中英術語對照: appendix/glossary.md

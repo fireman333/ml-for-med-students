@@ -57,6 +57,7 @@
 | 分層抽樣 | stratified sampling | 抽樣時讓各類別比例與原資料一致。 |
 | 重抽樣 | resampling | 對資料重複抽樣，例如自助法或過採樣、欠採樣。 |
 | 類別不平衡 | class imbalance | 某一類樣本遠多於另一類，例如罕見疾病。 |
+| 類別權重 | class weight | 訓練時讓少數類別的錯誤在損失中罰得較重，處理類別不平衡（Keras `fit(class_weight=...)`）。 |
 | 管線 | pipeline | 把前處理與模型串成一條處理流程，避免資料洩漏。 |
 | 資料框 | DataFrame | pandas 中像試算表的二維資料表格。 |
 | 陣列 | array | NumPy 中存放同型別數字的多維容器。 |
@@ -132,6 +133,7 @@
 | 網格搜尋 | grid search | 把超參數的候選組合全部試一遍。 |
 | 外部驗證 | external validation | 用其他機構或時期的資料檢驗模型。 |
 | 可解釋性 | interpretability | 人能否理解模型為何做出這個預測。 |
+| 配對自助法 | paired bootstrap | 從同一份測試集有放回重抽，兩個模型在同一批樣本上各算一次指標再相減，用來估計差值的信賴區間。 |
 
 ## 神經網路
 
@@ -157,6 +159,59 @@
 | Dropout | dropout | 訓練時隨機關閉部分神經元以降低過擬合；又稱丟棄法，本站直接用英文 Dropout。 |
 | 早停 | early stopping | 驗證表現不再進步就停止訓練；又稱提早停止。 |
 | 卷積神經網路 | convolutional neural network（CNN） | 擅長處理影像、以卷積層擷取局部特徵的網路。 |
+| 卷積 | convolution | 用一個小濾鏡在影像上逐格滑動、對應相乘再加總，擷取局部特徵；深度學習套件實際做的是互相關（cross-correlation）。 |
+| 濾鏡（卷積核） | filter / kernel | 卷積層裡要學的小權重方格（如 3×3），每個濾鏡偵測一種局部圖樣；勿與 SVM 的核函數混淆。 |
+| 特徵圖 | feature map | 一個濾鏡掃過整張輸入後得到的輸出圖，數值大代表該處符合濾鏡的圖樣。 |
+| 通道 | channel | 影像每個位置的數值個數：灰階 1、彩色 3；卷積層有幾個濾鏡就輸出幾個通道。 |
+| 步幅 | stride | 濾鏡每次滑動的格數；步幅 2 會讓輸出長寬約減半。 |
+| 填補 | padding | 在輸入外圍補 0，讓卷積後大小不縮水；Keras 的 `"same"` 為補、`"valid"`（預設）為不補。 |
+| 池化 | pooling | 把特徵圖切成小格、每格取一個代表值以縮小影像，沒有要學的權重。 |
+| 最大池化 | max pooling | 每個小格只留最大值的池化，保留最強訊號、對小幅平移較不敏感。 |
+| 權重共享 | weight sharing | 同一個濾鏡在整張圖上重複使用，使卷積層參數量與影像大小無關。 |
+| 感受野 | receptive field | 網路中某一格輸出「看得到」的原始輸入範圍，越深的層越大。 |
+| 攤平 | flatten | 把多維的特徵圖排成一長串數字，以便接到全連接層。 |
+| 全連接層 | dense layer / fully connected layer | 每個神經元都和上一層所有輸出相連的層，Keras 稱 `Dense`。 |
+| 捷徑學習 | shortcut learning | 模型靠與任務無關、但在訓練資料上剛好有效的線索（如醫院、標記）做判斷，換資料來源就失靈。 |
+| 資料擴增 | data augmentation | 訓練時對影像做不改變答案的隨機變化（翻轉、旋轉、縮放），讓小資料也能訓練；醫學影像要避免造出不存在的影像（如上下翻轉超音波）。 |
+| 批次正規化 | batch normalization | 在網路中間把每一批的輸出重新調整成平均約 0、標準差約 1，讓深網路較好訓練；批次很小時不穩。 |
+| 最佳化器 | optimizer | 決定每一步怎麼依梯度更新參數的方法，如 SGD、動量、Adam。 |
+| 隨機梯度下降 | stochastic gradient descent（SGD） | 每次只用一小批資料估計梯度並更新參數的梯度下降。 |
+| 動量 | momentum | 把過去幾步的更新方向累積起來，讓平坦方向越走越快、來回震盪互相抵消。 |
+| Adam | Adam | 替每個參數各自調整步伐的最佳化器，入門常用預設 `learning_rate=1e-3`。 |
+| 學習率排程 | learning rate schedule | 訓練中依規則調整學習率，例如 `ReduceLROnPlateau` 在卡住時減半。 |
+| 回呼 | callback | 訓練過程中每個 epoch 自動被呼叫的工具，如早停、存最佳模型。 |
+| 遷移學習 | transfer learning | 把在大資料（如 ImageNet）上預訓練的模型借來，用少量新資料學新任務。 |
+| 預訓練模型 | pretrained model | 已在其他大型資料上訓練好權重的模型，可直接下載使用。 |
+| 骨幹 | backbone | 預訓練模型中負責抽取特徵的卷積部分，接上自己的分類頭使用。 |
+| 凍結 | freeze | 訓練時固定某些層的權重不更新（Keras：`layer.trainable = False`）。 |
+| 特徵擷取 | feature extraction | 骨幹全部凍結，只把影像轉成特徵、再訓練新分類器。 |
+| 微調 | fine-tuning | 在預訓練模型上用較少的特定資料繼續訓練；影像任務常解凍最後幾層，並用很小的學習率和新分類頭一起訓練。 |
+| Grad-CAM | gradient-weighted class activation mapping | 用輸出對最後一層卷積特徵圖的梯度，畫出「哪些區域影響這次輸出」的熱圖；不代表推理正確。 |
+| 健全性檢查（解釋方法） | sanity check（for saliency maps） | 把模型權重換成隨機後，解釋圖應明顯改變；不變代表圖只反映影像本身。 |
+
+## 深度學習：文字與 Transformer
+
+| 中文 | English | 一句話白話解釋 |
+|---|---|---|
+| 斷詞 | tokenization | 把文字切成模型處理的單位（token），再換成整數編號。 |
+| 詞元 | token | 斷詞後的最小單位，可能是一個字、一個子詞或一個標點。 |
+| 詞彙表 | vocabulary | 每個 token 對應一個整數編號的對照表；只能用訓練集建立。 |
+| 子詞 | subword | 把罕見長字拆成常見片段的斷詞方式，LLM 多採用。 |
+| 詞嵌入 | embedding | 把每個 token 換成一串可學習的數字，意思相近的字會靠近。 |
+| 位置嵌入 | positional embedding | 加在詞嵌入上、代表「第幾個字」的向量，讓模型知道字序。 |
+| 注意力（自注意力） | attention（self-attention） | 每個字用 Query 比對其他字的 Key，依相關程度加權混合它們的 Value。 |
+| Query／Key／Value | query / key / value | 注意力的三種向量：發問用、被比對用、被取用的內容。 |
+| 多頭注意力 | multi-head attention | 平行做好幾組注意力，各自關注不同的關係後再合併。 |
+| Transformer | Transformer | 以多頭自注意力加前饋網路、殘差連接、層正規化堆疊而成的架構。 |
+| 殘差連接 | residual connection | 把一層的輸入直接加回輸出，避免資訊在多層加工中流失。 |
+| 層正規化 | layer normalization | 把每個向量的數值尺度拉回穩定範圍，幫助訓練。 |
+| [CLS] 記號 | classification token | 句首的特殊 token，透過注意力讀整句話，分類時只看它的輸出。 |
+| 預訓練 | pre-training | 先用大量未標註資料練一個通用任務（例如預測下一個字）。 |
+| 預測下一個 token | next-token prediction | LLM 的預訓練任務：給前文，猜下一個 token。 |
+| 大型語言模型 | large language model（LLM） | 在海量文字上預訓練的大型 Transformer，例如 ChatGPT。 |
+| 幻覺 | hallucination | LLM 產生通順、篤定但與事實不符的內容，例如不存在的文獻。 |
+| 溫度 | temperature | 生成時調整 softmax 分布尖或平的參數；越高越多樣也越易離題。 |
+| 資料汙染 | data contamination | 評估用的題目已出現在模型訓練資料中，使成績虛高。 |
 
 ## 程式與工具
 

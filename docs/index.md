@@ -84,9 +84,35 @@
 
 </div>
 
+### 深度學習篇
+
+讀完第 09 章之後的進階內容：從影像、訓練技巧到語言模型。程式改用 Keras 3，Colab 免費 CPU 可跑完，開 GPU 會更快。
+
+<div class="grid cards" markdown>
+
+-   :material-image-filter-center-focus:{ .lg .middle } __[12　卷積神經網路 CNN](chapters/12-cnn.md)__
+
+    ---
+
+    讓模型保留影像的空間結構，用更少參數看懂胸部 X 光。
+
+-   :material-tune-variant:{ .lg .middle } __[13　訓練技巧與遷移學習](chapters/13-transfer-learning.md)__
+
+    ---
+
+    資料擴增、批次正規化、借用預訓練模型，以及 Grad-CAM 熱圖的限制。
+
+-   :material-text-search:{ .lg .middle } __[15　注意力機制與 Transformer](chapters/15-transformer.md)__
+
+    ---
+
+    從病人主訴的文字分類，一路講到大型語言模型的原理與限制。
+
+</div>
+
 ## 學習路徑
 
-第 01–04 章是共同基礎，建議依序閱讀。第 05–09 章是各種模型，彼此相對獨立，可依興趣挑著讀；第 11 章整合前面所有內容，建議最後讀。
+第 01–04 章是共同基礎，建議依序閱讀。第 05–09 章是各種模型，彼此相對獨立，可依興趣挑著讀；第 11 章整合前面所有內容。深度學習篇（12、13、15）建立在第 09 章之上，第 12、13 章建議依序讀，第 15 章可直接從第 09 章接過去。
 
 ```mermaid
 flowchart LR
@@ -105,6 +131,9 @@ flowchart LR
     I --> K
     D --> J["10 降維"]
     J --> K
+    I --> L["12 CNN"]
+    L --> M["13 遷移學習"]
+    I --> N["15 Transformer"]
     style E stroke-dasharray: 5 5
     style F stroke-dasharray: 5 5
     style G stroke-dasharray: 5 5
