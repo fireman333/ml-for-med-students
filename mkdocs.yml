@@ -98,6 +98,7 @@ nav:
       - 13 訓練技巧與遷移學習: chapters/13-transfer-learning.md
       - 14 心電圖與資料洩漏: chapters/14-ecg.md
       - 15 注意力機制與 Transformer: chapters/15-transformer.md
+      - 16 自編碼器與生成模型: chapters/16-generative.md
   - 附錄:
       - 資料集一覽: appendix/datasets.md
       - 中英術語對照: appendix/glossary.md
