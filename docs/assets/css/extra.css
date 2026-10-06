@@ -148,9 +148,13 @@ body { background: var(--bg-cream); }
   font-size: 22px;
   line-height: 1.5;
   color: var(--ink-heading);
-  border-bottom: 2px solid var(--line-strong);
-  padding-bottom: 4px;
+  border-bottom: 4px solid var(--frame-light);
+  padding-bottom: 6px;
   margin-top: 2.2em;
+}
+.md-typeset h2::before {
+  content: "◆ ";
+  color: var(--accent-gold);
 }
 .md-typeset h3 {
   font-size: 22px;
@@ -435,7 +439,16 @@ img.pixel { image-rendering: pixelated; image-rendering: -moz-crisp-edges; }
 /* ---------- misc ---------- */
 .md-typeset mark { color: var(--ink-strong); }
 .md-typeset hr { border-bottom: 2px dashed var(--line-strong); }
-.md-typeset blockquote { border-left: 4px solid var(--line-strong); color: var(--ink-muted); }
+.md-typeset blockquote {
+  margin: 1.2em 3px 1.2em 0;
+  padding: .6rem .9rem;
+  background: var(--paper);
+  border-left: 8px solid var(--accent-gold);
+  box-shadow: 2px 2px 0 var(--bg-dark);
+  color: var(--ink-body);
+}
+.md-typeset blockquote > :first-child { margin-top: 0; }
+.md-typeset blockquote > :last-child { margin-bottom: 0; }
 .md-typeset kbd { background: var(--paper); color: var(--ink-strong); box-shadow: 0 0 0 1px var(--frame-dark), 0 2px 0 var(--frame-light); }
 :focus-visible { outline: 2px solid var(--study-border); outline-offset: 2px; }
 ::selection { background: var(--accent-gold-soft); color: var(--ink-strong); }
@@ -478,16 +491,19 @@ img.pixel { image-rendering: pixelated; image-rendering: -moz-crisp-edges; }
 /* Chapter cards on home page */
 .md-typeset .grid.cards > ul > li,
 .md-typeset .grid > .card {
-  background: var(--bg-paper);
-  border: 2px solid var(--frame-dark);
-  border-radius: 4px;
-  box-shadow: 3px 3px 0 var(--frame-light);
+  background: var(--paper);
+  border: 4px solid var(--frame-light);
+  outline: 2px solid var(--frame-dark);
+  outline-offset: -2px;
+  border-radius: 0;
+  box-shadow: 4px 4px 0 var(--bg-dark);
   transition: transform 80ms steps(2, end), box-shadow 80ms steps(2, end);
 }
 .md-typeset .grid.cards > ul > li:hover,
-.md-typeset .grid > .card:hover {
-  border-color: var(--frame-dark);
-  box-shadow: 4px 4px 0 var(--accent-gold);
+.md-typeset .grid > .card:hover,
+.md-typeset .grid.cards > ul > li:focus-within {
+  border-color: var(--frame-light);
+  box-shadow: 5px 5px 0 var(--accent-gold);
   transform: translate(-1px, -1px);
 }
 .md-typeset .grid.cards > ul > li > hr { border-bottom: 2px dashed var(--line-mid); }
@@ -495,9 +511,49 @@ img.pixel { image-rendering: pixelated; image-rendering: -moz-crisp-edges; }
 .md-typeset .grid.cards > ul > li > p:first-child a { color: var(--ink-heading); }
 .md-typeset .grid.cards .twemoji { color: var(--ink-label); }
 
+/* ---------- home hero: sister-site .dialogue box ---------- */
+.md-typeset .dialogue {
+  position: relative;
+  margin: 0 4px 1.2rem 0;
+  padding: 16px 16px 24px;
+  background: var(--bg-dark);
+  color: var(--bg-cream);
+  border: 4px solid var(--frame-light);
+  box-shadow: 4px 4px 0 var(--bg-dark);
+  line-height: 1.8;
+}
+.md-typeset .dialogue p { margin: 0 0 .5em; color: var(--bg-cream); }
+.md-typeset .dialogue p:last-child { margin-bottom: 0; }
+.md-typeset .dialogue::after {
+  content: "▼";
+  position: absolute;
+  right: 12px;
+  bottom: 4px;
+  font-size: 11px;
+  color: var(--accent-gold);
+  animation: dialogue-blink 1s steps(2, start) infinite;
+}
+@keyframes dialogue-blink { to { visibility: hidden; } }
+.md-typeset .dialogue .hero-wild {
+  font-family: var(--font-pixel);
+  -webkit-font-smoothing: none;
+  font-size: 22px;
+  line-height: 1.5;
+  text-shadow: var(--pixel-bold);
+  letter-spacing: .5px;
+  margin-bottom: .4em;
+}
+.md-typeset .dialogue .hero-boss { color: var(--accent-gold); }
+.md-typeset .dialogue .hero-sub { font-size: .7rem; color: #d9caa6; }
+.md-typeset .hero-actions { margin: 0 0 1.6rem; }
+/* md_in_html wraps the two links in one <p>; flex that paragraph */
+.md-typeset .hero-actions > p { display: flex; flex-wrap: wrap; gap: .8rem; margin: 0; }
+.md-typeset .hero-actions .md-button { margin: 0; min-height: 44px; display: inline-flex; align-items: center; }
+
 @media (prefers-reduced-motion: reduce) {
   .md-typeset .md-button,
   .md-typeset .grid.cards > ul > li { transition: none; }
+  .md-typeset .dialogue::after { animation: none; }
 }
 
 /* Quiz questions are full sentences: keep the pixel frame but use the reading font. */

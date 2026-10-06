@@ -1,6 +1,17 @@
 # 醫學生的機器學習入門
 
-**給醫學與生醫相關科系學生的機器學習（Machine Learning）入門：直覺先行、圖解為主，搭配可直接在瀏覽器執行的 Python 實作與公開醫學資料集。**
+<div class="dialogue hero-dialogue" markdown>
+<p class="hero-wild">野生的 <span class="hero-boss">機器學習</span> 出現了！</p>
+
+給醫學與生醫相關科系學生的機器學習（Machine Learning）入門：直覺先行、圖解為主，搭配可直接在瀏覽器執行的 Python 實作與公開醫學資料集。
+
+<p class="hero-sub">共 16 章、純閱讀約 8 小時（不含 notebook 實作）。每章附 Colab notebook 與章末小測驗，不用在自己電腦安裝任何東西。</p>
+</div>
+
+<div class="hero-actions" markdown>
+[▶ 從第 1 章開始](chapters/01-intro.md){ .md-button .md-button--primary }
+[直接看深度學習篇](chapters/12-cnn.md){ .md-button }
+</div>
 
 ## 為什麼醫學生要學機器學習
 
