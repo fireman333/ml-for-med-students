@@ -23,6 +23,7 @@
 | BreastMNIST 128×128（MedMNIST v2） | 13 | NumPy 讀取 Zenodo 的 `breastmnist_128.npz`：`https://zenodo.org/records/10519652/files/breastmnist_128.npz?download=1`（約 11 MB，不需 medmnist 套件） | 780 張 128×128 灰階乳房超音波（train 546／val 78／test 156） | 惡性（原始標籤 0；train 147）／正常＋良性（原始標籤 1；train 399） | CC BY 4.0（medmnist 3.0.2 `INFO`） | Yang J, et al. Sci Data 2023;10:41；原始資料 Al-Dhabyani W, et al. Data Brief 2020;28:104863 | 原始標籤 0 = 惡性，與直覺相反；單一醫院；原始 BUSI 有約 19% 重複影像、70 張腋下影像、≥19 張標籤存疑、許多測量游標標在病灶上（Pawłowska 2023），BreastMNIST 總數同為 780，推測未剔除；測試集僅 156 張，AUC 信賴區間寬 |
 | Gretel symptom_to_diagnosis | 15 | `pd.read_json("https://huggingface.co/datasets/gretelai/symptom_to_diagnosis/resolve/main/train.jsonl", lines=True)`（test 同理）；[HF](https://huggingface.co/datasets/gretelai/symptom_to_diagnosis) | 訓練 853＋測試 212 筆英文症狀描述（中位數 28 字，最長 55 字） | 22 種診斷（每類訓練約 32–40 筆） | Apache-2.0（HF 實查）；上游 Kaggle Symptom2Disease 為 CC0 | Gretel.ai（HF dataset card）；上游 Barman NR, Kaggle Symptom2Disease | **由 LLM 改寫的合成主訴、非真實病人資料**；22 類刻意均衡，與真實盛行率無關；句型高度模板化（約 97% 以 "I" 開頭），成績會比真實病歷樂觀；沒有「以上皆非」類別；訓練集內 4 句重複、1 句測試句與訓練集完全相同 |
 | CDC Diabetes Health Indicators | 11 | `pd.read_csv("https://archive.ics.uci.edu/static/public/891/data.csv")`，備援 `ucimlrepo.fetch_ucirepo(id=891)`；[UCI 891](https://archive.ics.uci.edu/dataset/891) | 253,680 × 21 | Diabetes_binary（陽性 13.9%） | CC0 1.0（UCI 頁面指向 Kaggle 原始資料集；經 Kaggle API 於 2026-09-30 查詢，`licenseName` 為 CC0: Public Domain） | DOI 10.24432/C53919；源自 CDC BRFSS 2015 | BRFSS 自陳問卷，非診斷資料；Age 為 13 級分組編碼；資料量大，SVM 等須抽樣（如分層抽樣 20,000 列） |
+| MIT-BIH Arrhythmia Database v1.0.0（PhysioNet） | 14 | 執行時從官方下載 zip：`https://physionet.org/static/published-projects/mitdb/mit-bih-arrhythmia-database-1.0.0.zip`（77 MB）；失敗改逐檔 `https://physionet.org/files/mitdb/1.0.0/`，再失敗用 HF 鏡像 `epr-labs/mit-bih-arrhythmia-database`。以 zip 內 `SHA256SUMS.txt` 驗證；NumPy 自寫讀檔器（與 wfdb 逐點比對一致）。[官方頁](https://physionet.org/content/mitdb/1.0.0/) | 48 段 30 分鐘雙導程 Holter、360 Hz、47 位受試者；本章用 44 段非節律器紀錄（43 位受試者，201／202 合併）的 MLII 導程，切成 100,680 個心跳 × 117 點 | AAMI 心跳類別 N 90,089／S 2,781／V 7,008／F 802（Q 15 排除） | ODC-By v1.0 | Moody GB, Mark RG. IEEE Eng Med Biol Mag 2001；Goldberger AL et al. Circulation 2000 | 類別極度不平衡且少數類集中在少數人（F 類 92% 來自 2 位受試者）；同一人數千個心跳，隨機切心跳會資料洩漏；1975–1979 年 BIH Arrhythmia Laboratory（Beth Israel Hospital）單一機構錄音（官方頁描述）；從台灣下載官方 zip 實測約 9 分鐘 |
 
 ## 補充示範資料集（僅在小節內使用）
 
@@ -40,6 +41,7 @@
 | 模擬身高／體重 | 10（互動 demo） | 固定亂數種子的標準化模擬資料（r ≈ 0.8），見 `ch10-pca-projection.js` | PCA 投影互動示範 |
 | 模擬 CKD（備援） | 03 | notebook 內 `make_fake_ckd()`，僅在 UCI 下載失敗時使用 | 離線備用，輸出標示 SYNTHETIC |
 | 6×6 卷積示意矩陣 | 12 | `scripts/figs_ch12.py` 手寫的 0／1 小圖與 3×3 垂直邊緣濾鏡（本站自產） | `conv_sliding.png` 卷積滑動示意 |
+| 合成心電圖（含一個 PVC） | 14 | `docs/assets/js/demos/ch14-conv1d.js` 以高斯函數組合 P、Q、R、S、T 波產生，100 Hz、5 秒 | 互動 demo：一維卷積濾鏡沿時間軸滑動 |
 
 ## 備選資料集（目前沒有任何章節使用）
 
@@ -51,6 +53,7 @@
 | Breast Cancer Coimbra | [UCI 451](https://archive.ics.uci.edu/dataset/451) | 116 × 9 | CC BY 4.0（UCI 頁面實查） | 樣本極小，適合討論小樣本的過度自信 |
 | Mammography | [OpenML](https://www.openml.org/search?type=data&q=mammography) | 11,183 × 6 | 查不到；未驗證 | 極端不平衡（陽性 2.3%） |
 | Digits（sklearn 內建） | `sklearn.datasets.load_digits` | 1,797 × 64 | 查不到；未驗證 | 非醫學資料，僅作離線備用 |
+| PTB-XL v1.0.3（PhysioNet） | [PhysioNet](https://physionet.org/content/ptb-xl/1.0.3/) | 12 導程 10 秒心電圖（兩萬多筆） | CC BY 4.0 | 附官方依病人切分 `strat_fold`；第 14 章只文字介紹、未下載。整包 1.84 GB，Colab 免費版下載偏重 |
 
 ## 開放資料 API（第 3 章示範）
 

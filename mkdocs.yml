@@ -96,6 +96,7 @@ nav:
   - 深度學習篇:
       - 12 卷積神經網路 CNN: chapters/12-cnn.md
       - 13 訓練技巧與遷移學習: chapters/13-transfer-learning.md
+      - 14 心電圖與資料洩漏: chapters/14-ecg.md
       - 15 注意力機制與 Transformer: chapters/15-transformer.md
   - 附錄:
       - 資料集一覽: appendix/datasets.md

@@ -52,12 +52,14 @@
 | 訓練集 | training set | 用來讓模型學習的資料。 |
 | 驗證集 | validation set | 用來調整超參數、比較模型的資料；樂詞網作「確認資料集」。 |
 | 測試集 | test set | 最後一次檢驗模型表現、之前完全不碰的資料。 |
-| 資料洩漏 | data leakage | 測試集或結果的資訊不當進入訓練，使成績虛高。 |
+| 資料洩漏 | data leakage | 測試集或結果的資訊不當進入訓練，使成績虛高；同一位病人的多筆資料分落訓練與測試集也是洩漏（第 14 章）。 |
 | 抽樣 | sampling | 從資料中選出一部分樣本。 |
 | 分層抽樣 | stratified sampling | 抽樣時讓各類別比例與原資料一致。 |
 | 重抽樣 | resampling | 對資料重複抽樣，例如自助法或過採樣、欠採樣。 |
 | 類別不平衡 | class imbalance | 某一類樣本遠多於另一類，例如罕見疾病。 |
 | 類別權重 | class weight | 訓練時讓少數類別的錯誤在損失中罰得較重，處理類別不平衡（Keras `fit(class_weight=...)`）。 |
+| 分組切分 | group split（GroupKFold／StratifiedGroupKFold） | 以病人等「組」為單位切訓練與測試集，同一組只會在其中一邊，避免模型靠「認得這個人」得分。 |
+| 下採樣 | undersampling | 隨機丟掉部分多數類樣本以減輕不平衡；必須在切分後、只對訓練集做。 |
 | 管線 | pipeline | 把前處理與模型串成一條處理流程，避免資料洩漏。 |
 | 資料框 | DataFrame | pandas 中像試算表的二維資料表格。 |
 | 陣列 | array | NumPy 中存放同型別數字的多維容器。 |
@@ -122,6 +124,7 @@
 | 陽性預測值 | positive predictive value（PPV） | 檢驗陽性時真的有病的機率，受盛行率影響。 |
 | 陰性預測值 | negative predictive value（NPV） | 檢驗陰性時真的沒病的機率。 |
 | F1 分數 | F1 score | 精確率與召回率的調和平均。 |
+| macro-F1 | macro-averaged F1 | 各類別 F1 的單純平均，每一類權重相同，少數類表現差會直接把它拉低。 |
 | ROC 曲線 | ROC curve | 畫出各分類閾值下敏感度對（1 − 特異度）的曲線。 |
 | 曲線下面積 | area under the curve（AUC） | ROC 曲線下的面積，醫學文獻常稱 C 統計量。 |
 | 精確率—召回率曲線 | precision-recall curve | 各閾值下精確率與召回率的關係，適合不平衡資料。 |
@@ -188,6 +191,18 @@
 | 微調 | fine-tuning | 在預訓練模型上用較少的特定資料繼續訓練；影像任務常解凍最後幾層，並用很小的學習率和新分類頭一起訓練。 |
 | Grad-CAM | gradient-weighted class activation mapping | 用輸出對最後一層卷積特徵圖的梯度，畫出「哪些區域影響這次輸出」的熱圖；不代表推理正確。 |
 | 健全性檢查（解釋方法） | sanity check（for saliency maps） | 把模型權重換成隨機後，解釋圖應明顯改變；不變代表圖只反映影像本身。 |
+
+## 深度學習：序列與訊號
+
+| 中文 | English | 一句話白話解釋 |
+|---|---|---|
+| 序列資料 | sequence data | 依時間（或位置）排列、順序有意義的資料，如心電圖、文字。 |
+| 取樣率 | sampling rate | 每秒記錄幾個數字，決定訊號的時間解析度（MIT-BIH 為 360 Hz）。 |
+| 一維卷積 | 1D convolution | 濾鏡只沿時間軸滑動的卷積，Keras 為 `Conv1D`。 |
+| 循環神經網路 | recurrent neural network, RNN | 一個時間點一個時間點讀序列、邊讀邊更新隱藏狀態的網路。 |
+| 隱藏狀態 | hidden state | RNN 讀到目前為止對序列的「記憶」摘要。 |
+| 梯度消失 | vanishing gradient | 誤差往回傳越遠越微弱，使網路難以學到很久以前的資訊。 |
+| LSTM／GRU | long short-term memory／gated recurrent unit | 加上閘門、由網路自己決定保留或寫入多少記憶的 RNN。 |
 
 ## 深度學習：文字與 Transformer
 

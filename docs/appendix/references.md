@@ -14,7 +14,7 @@
 | [Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course)（含 [Numerical data](https://developers.google.com/machine-learning/crash-course/numerical-data)、[Neural networks](https://developers.google.com/machine-learning/crash-course/neural-networks)、[ROC and AUC](https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc)、[Imbalanced datasets](https://developers.google.com/machine-learning/crash-course/overfitting/imbalanced-datasets)、[Intro to Large Language Models](https://developers.google.com/machine-learning/crash-course/llm)） | Google | 持續更新 | 內容 CC BY 4.0、程式 Apache 2.0（依研究筆記；未逐頁確認）；只連結、只轉述概念 | 01、03、04、09、11、15 |
 | [ML-For-Beginners](https://github.com/microsoft/ML-For-Beginners)（含 [2-Regression](https://github.com/microsoft/ML-For-Beginners/tree/main/2-Regression)、[5-Clustering](https://github.com/microsoft/ML-For-Beginners/tree/main/5-Clustering)） | Microsoft | 持續更新 | MIT；教法參考、未複製內容 | 01、04、08 |
 | [Python Data Science Handbook](https://jakevdp.github.io/PythonDataScienceHandbook/)（第 05.05 Naive Bayes、05.06 Linear Regression、05.07 SVM、05.08 Random Forests、05.09 PCA、05.11 k-Means 各節） | Jake VanderPlas | 2016 | 文字 CC BY-NC-ND、程式碼 MIT；**只連結、未改作** | 02、04、05、06、07、08、10 |
-| [Dive into Deep Learning](https://d2l.ai/)（[Multilayer Perceptrons](https://d2l.ai/chapter_multilayer-perceptrons/mlp.html)、[Convolutional Neural Networks](https://d2l.ai/chapter_convolutional-neural-networks/index.html)、[Attention Mechanisms and Transformers](https://d2l.ai/chapter_attention-mechanisms-and-transformers/index.html)） | Zhang A, Lipton ZC, Li M, Smola AJ | 持續更新 | 文字 CC BY-SA 4.0、程式碼 modified MIT；教學順序參考、未複製內文 | 09、12、15 |
+| [Dive into Deep Learning](https://d2l.ai/)（[Multilayer Perceptrons](https://d2l.ai/chapter_multilayer-perceptrons/mlp.html)、[Convolutional Neural Networks](https://d2l.ai/chapter_convolutional-neural-networks/index.html)、[Recurrent Neural Networks](https://d2l.ai/chapter_recurrent-neural-networks/index.html)、[Attention Mechanisms and Transformers](https://d2l.ai/chapter_attention-mechanisms-and-transformers/index.html)） | Zhang A, Lipton ZC, Li M, Smola AJ | 持續更新 | 文字 CC BY-SA 4.0、程式碼 modified MIT；教學順序參考、未複製內文；第 14 章 RNN 為延伸閱讀 | 09、12、14、15 |
 | [李宏毅 Machine Learning 2021 Spring](https://speech.ee.ntu.edu.tw/~hylee/ml/2021-spring.php) | 李宏毅（國立臺灣大學） | 2021 | 未驗證；只連結 | 09、12、15 |
 | [StatQuest: Naive Bayes, Clearly Explained](https://www.youtube.com/results?search_query=statquest+naive+bayes+clearly+explained)（YouTube 搜尋連結，未確認單一影片網址） | Josh Starmer | — | 版權屬作者，未查證；只連結 | 05 |
 | [NumPy: the absolute basics for beginners](https://numpy.org/doc/stable/user/absolute_beginners.html) | NumPy 社群 | 持續更新 | BSD-3-Clause（未逐頁核對） | 02 |
@@ -22,7 +22,7 @@
 | [pandas Copy-on-Write](https://pandas.pydata.org/docs/user_guide/copy_on_write.html) | pandas 社群 | 持續更新 | BSD-3-Clause（未逐頁核對）；第 2 章陷阱 1 的官方依據 | 02 |
 | [Matplotlib Quick start guide](https://matplotlib.org/stable/users/explain/quick_start.html) | Matplotlib 社群 | 持續更新 | PSF-based license（未逐頁核對） | 02 |
 | [SciPy statistics tutorial](https://docs.scipy.org/doc/scipy/tutorial/stats.html) | SciPy 社群 | 持續更新 | BSD-3-Clause（未逐頁核對） | 02 |
-| [Keras 3 文件](https://keras.io/getting_started/) | Keras 團隊 | 持續更新 | Apache-2.0 | 09、12、13、15 |
+| [Keras 3 文件](https://keras.io/getting_started/) | Keras 團隊 | 持續更新 | Apache-2.0 | 09、12、13、14、15 |
 | [The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/) | Jay Alammar | 2018 | 部落格 repo MIT，只連結 | 15 |
 
 ### scikit-learn 官方文件
@@ -86,6 +86,8 @@
 | Attention Is All You Need | Vaswani A, et al. | 2017 | NeurIPS 2017；[arXiv:1706.03762](https://arxiv.org/abs/1706.03762) | arXiv 論文；只引用概念 | 15 |
 | Large language models encode clinical knowledge | Singhal K, et al. | 2023 | Nature 620:172–180；[DOI 10.1038/s41586-023-06291-2](https://doi.org/10.1038/s41586-023-06291-2)；[PMID 37438534](https://pubmed.ncbi.nlm.nih.gov/37438534/) | 期刊版權；只引用結論 | 15 |
 | Performance of ChatGPT on USMLE | Kung TH, et al. | 2023 | PLOS Digit Health 2:e0000198；[DOI 10.1371/journal.pdig.0000198](https://doi.org/10.1371/journal.pdig.0000198)；[PMID 36812645](https://pubmed.ncbi.nlm.nih.gov/36812645/) | CC BY 4.0（未逐頁確認） | 15 |
+| Leakage and the reproducibility crisis in machine-learning-based science | Kapoor S, Narayanan A | 2023 | Patterns 4(9):100804；[DOI 10.1016/j.patter.2023.100804](https://doi.org/10.1016/j.patter.2023.100804)；[PMID 37720327](https://pubmed.ncbi.nlm.nih.gov/37720327/)（PMC10499856） | 開放取用（未逐頁核對授權細節）；數字取自摘要，洩漏類型取自全文 taxonomy 小節 | 14 |
+| Automatic classification of heartbeats using ECG morphology and heartbeat interval features | de Chazal P, O'Dwyer M, Reilly RB | 2004 | IEEE Trans Biomed Eng 51(7):1196–1206；[DOI 10.1109/TBME.2004.827359](https://doi.org/10.1109/TBME.2004.827359)；[PMID 15248536](https://pubmed.ncbi.nlm.nih.gov/15248536/) | 期刊版權；數字取自 PubMed 摘要 | 14 |
 
 ### 資料集的原始文獻
 
@@ -102,10 +104,13 @@
 | Dataset of breast ultrasound images | Al-Dhabyani W, Gomaa M, Khaled H, Fahmy A | 2020 | Data Brief 28:104863；[DOI 10.1016/j.dib.2019.104863](https://doi.org/10.1016/j.dib.2019.104863)；[PMID 31867417](https://pubmed.ncbi.nlm.nih.gov/31867417/) | open access；資料集授權以原頁為準 | 13 |
 | Letter to the Editor. Re: "Dataset of breast ultrasound images" | Pawłowska A, Karwat P, Żołek N | 2023 | Data Brief 48:109247；[DOI 10.1016/j.dib.2023.109247](https://doi.org/10.1016/j.dib.2023.109247)；[PMID 37383756](https://pubmed.ncbi.nlm.nih.gov/37383756/) | open access；只引用結論 | 13 |
 | Gretel symptom_to_diagnosis（Hugging Face 資料集卡片；上游為 Kaggle Symptom2Disease） | Gretel.ai；上游 Barman NR | — | [HF dataset card](https://huggingface.co/datasets/gretelai/symptom_to_diagnosis) | Apache-2.0（HF 實查）；上游 Kaggle 為 CC0 | 15 |
+| The impact of the MIT-BIH Arrhythmia Database | Moody GB, Mark RG | 2001 | IEEE Eng Med Biol Mag 20(3):45–50；[DOI 10.1109/51.932724](https://doi.org/10.1109/51.932724)；[PMID 11446209](https://pubmed.ncbi.nlm.nih.gov/11446209/) | 期刊版權；資料庫本身 ODC-By v1.0 | 14 |
+| PhysioBank, PhysioToolkit, and PhysioNet: components of a new research resource for complex physiologic signals | Goldberger AL, Amaral LAN, Glass L, et al. | 2000 | Circulation 101(23):e215–e220（PhysioNet 要求的標準引用） | 期刊版權 | 14 |
+| PTB-XL, a large publicly available electrocardiography dataset | Wagner P, Strodthoff N, Bousseljot RD, et al. | 2020 | Sci Data 7:154；[DOI 10.1038/s41597-020-0495-6](https://doi.org/10.1038/s41597-020-0495-6)；[PMID 32451379](https://pubmed.ncbi.nlm.nih.gov/32451379/)（PMC7248071） | CC BY 4.0 | 14（只在文字介紹 `strat_fold`，未下載） |
 
 ## 三、資料集來源
 
-各資料集的載入方式、樣本數、授權與已知問題，請見 **[資料集一覽](datasets.md)**，此處不重複。本站各章使用的資料集有：Breast Cancer Wisconsin（第 1、4、5、6、9、10、11 章）、Heart Failure Clinical Records（第 2、7、8 章）、Chronic Kidney Disease、Pima Indians Diabetes 與 WHO GHO API（第 3 章）、sklearn Diabetes（第 4、10 章）、Medical Abstracts TC Corpus（第 5 章）、Heart Disease Cleveland（第 7、10 章）、PneumoniaMNIST（第 9、12 章）、BloodMNIST（第 12 章）、BreastMNIST（第 13 章）、Gretel symptom_to_diagnosis（第 15 章）、CDC Diabetes Health Indicators（第 11 章）。
+各資料集的載入方式、樣本數、授權與已知問題，請見 **[資料集一覽](datasets.md)**，此處不重複。本站各章使用的資料集有：Breast Cancer Wisconsin（第 1、4、5、6、9、10、11 章）、Heart Failure Clinical Records（第 2、7、8 章）、Chronic Kidney Disease、Pima Indians Diabetes 與 WHO GHO API（第 3 章）、sklearn Diabetes（第 4、10 章）、Medical Abstracts TC Corpus（第 5 章）、Heart Disease Cleveland（第 7、10 章）、PneumoniaMNIST（第 9、12 章）、BloodMNIST（第 12 章）、BreastMNIST（第 13 章）、Gretel symptom_to_diagnosis（第 15 章）、CDC Diabetes Health Indicators（第 11 章）、MIT-BIH Arrhythmia Database（第 14 章，PhysioNet，ODC-By v1.0）。
 
 ## 四、互動元件、工具與其他
 
