@@ -20,6 +20,8 @@
 :root,
 [data-md-color-scheme="default"] {
   --bg-cream: #f4ecd8;
+  --bg-cream-deep: #eadfc4;
+  --bg-dark: #2d1f1a;
   --bg-paper: #fff8ec;
   --paper: #fffdf7;
   --paper-tint: #f8f2e2;
@@ -381,10 +383,19 @@ body { background: var(--bg-cream); }
 .md-footer__title { font-size: 11px; }
 .md-footer__direction { font-size: 11px; opacity: 1; color: var(--ink-muted); }
 .md-footer__button { color: var(--frame-dark); }
-.md-footer-meta { border-top: 2px solid var(--line-mid); }
-.md-footer-meta, .md-copyright, .md-copyright__highlight { color: var(--ink-muted); }
-html .md-footer-meta.md-typeset a { color: var(--study-ink); }
-html .md-footer-meta.md-typeset a:hover { color: var(--accent-leaf-ink); }
+/* footer meta = sister-site footer (LocalLLMRPG .site-footer). Background is
+   --bg-dark rather than wood: gold links on #5a3f29 are only 4.1:1 (< AA). */
+.md-footer-meta {
+  background: var(--bg-dark);
+  border-top: 4px solid var(--frame-dark);
+}
+.md-footer-meta, .md-copyright, .md-copyright__highlight { color: var(--bg-cream); }
+.md-copyright { width: 100%; margin: .6rem 0; font-size: .7rem; line-height: 1.7; }
+.site-footer-meta__line { margin: 0 0 .25rem; }
+.site-footer-meta__credit { opacity: .85; }
+html .md-footer-meta.md-typeset a { color: var(--accent-gold); text-decoration: underline; text-underline-offset: 2px; }
+html .md-footer-meta.md-typeset a:hover,
+html .md-footer-meta.md-typeset a:focus { color: var(--bg-cream); }
 
 /* ---------- chapter images (white PNG on cream) ---------- */
 .md-typeset img[src*="assets/img/"] {

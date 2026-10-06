@@ -8,6 +8,9 @@ exclude_docs: |
 
 theme:
   name: material
+  custom_dir: overrides
+  favicon: assets/img/brand/favicon.svg
+  logo: assets/img/brand/logo.svg
   language: zh-TW
   font:
     text: Noto Sans TC
@@ -29,8 +32,6 @@ theme:
     - content.code.copy
     - content.code.annotate
     - content.tabs.link
-  icon:
-    logo: material/brain
 
 plugins:
   - search:
@@ -103,3 +104,4 @@ nav:
       - 資料集一覽: appendix/datasets.md
       - 中英術語對照: appendix/glossary.md
       - 參考資源與授權: appendix/references.md
+      - 關於本站: appendix/about.md

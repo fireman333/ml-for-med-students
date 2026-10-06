@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+  {#- Shared med-study-rpg identity: dark wood header colour on mobile browser chrome -#}
+  <meta name="theme-color" content="#2d1f1a">
+  <meta name="author" content="醫學系畢業生 WLK">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{ config.site_name }}">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:title" content="{% if page and page.title and not page.is_homepage %}{{ page.title | striptags }}｜{% endif %}{{ config.site_name }}">
+  <meta property="og:description" content="{{ (page.meta.description if page and page.meta and page.meta.description else config.site_description) }}">
+  {% if page and page.canonical_url %}<meta property="og:url" content="{{ page.canonical_url }}">{% endif %}
+{% endblock %}
