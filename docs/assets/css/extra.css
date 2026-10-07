@@ -107,11 +107,13 @@
   --md-mermaid-font-family: var(--font-ui);
 }
 
-body { background: var(--bg-cream); }
+/* 4px 1-bit dither, same as LocalLLMRPG body (no gradients in this theme) */
+body {
+  background-color: var(--bg-cream);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' shape-rendering='crispEdges'%3E%3Crect width='1' height='1' fill='%23d9caa6'/%3E%3Crect x='2' y='2' width='1' height='1' fill='%23d9caa6'/%3E%3C/svg%3E");
+}
 
 /* ---------- pixel font targets ---------- */
-.md-header__title,
-.md-tabs__link,
 .md-nav__title,
 .md-typeset h1,
 .md-typeset h2,
@@ -181,63 +183,235 @@ body { background: var(--bg-cream); }
 .md-typeset .headerlink { color: var(--line-strong); }
 .md-typeset .headerlink:hover, .md-typeset :target > .headerlink { color: var(--accent-leaf-ink); }
 
-/* ---------- header / tabs ----------
-   Dark wood header shared with the sister sites (LocalLLMRPG .site-header):
-   --bg-dark ground, 4px wood rule, gold site name. Icons inherit `color`.
-   Contrast on #2d1f1a: cream #f4ecd8 13.5:1, gold #d4a04d 6.8:1 (AA). */
-.md-header {
+/* ---------- header ----------
+   Mirrors the sister Astro site LocalLLMRPG (.site-header in
+   src/styles/global.css + src/components/Search.astro) so switching
+   ML/DL <-> LLM does not make the chrome jump:
+   #2d1f1a ground, 4px wood rule, sticky, 1088px inner, 8px 16px padding,
+   24px pixel icon + 16px gold site name, 12px switch, 16px flat nav with
+   "▶" on the current section, 200x40 paper search box (44x44 icon on phones).
+   Material keeps working through .md-header (sticky offset), the
+   label[for=__drawer] (chapter drawer) and label[for=__search] + .md-search.
+   Grid slots:
+     <370       [title ............ search] / [switch ...... drawer] / [nav]
+     370-767    [title ..... switch][search] / [nav ........... drawer]
+     768-1219   [title][switch] ..... [search] / [nav ........... drawer]
+     >=1220     [title][switch] ........ [nav][search]   (drawer not needed)
+   LLM goes single-row at 1024; ML waits until 1220 because below that the
+   chapter drawer button needs a slot.
+   Contrast on #2d1f1a: cream 13.5:1, gold 6.8:1 (AA). */
+.md-header.site-header {
   background: var(--bg-dark);
   color: var(--bg-cream);
   border-bottom: 4px solid var(--frame-dark);
   box-shadow: none;
+  font-family: var(--font-pixel);
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: auto;
+  font-weight: normal;
+  letter-spacing: 0;
+  line-height: 1.6;
 }
-.md-header--shadow { box-shadow: none; }
-.md-header__title { font-size: 22px; color: var(--accent-gold); }
-.md-header__topic:first-child { font-weight: normal; }
-.md-header__button { color: var(--bg-cream); }
-.md-header__button:hover,
-.md-header__button:focus { color: var(--accent-gold); opacity: 1; }
-.md-header__button.md-logo img,
-.md-header__button.md-logo svg { image-rendering: pixelated; }
-.md-header :focus-visible,
-.md-tabs :focus-visible { outline-color: var(--accent-gold); }
-.md-tabs {
-  background: var(--bg-dark);
+.site-header__inner {
+  max-width: 1088px;
+  margin: 0 auto;
+  padding: 8px 16px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  grid-template-areas:
+    "title switch search"
+    "nav   nav    drawer";
+  align-items: center;
+  gap: 8px 16px;
+}
+.site-header :focus-visible { outline: 2px solid var(--accent-gold); outline-offset: 1px; }
+
+.site-title {
+  grid-area: title;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  min-height: 44px;
+  color: var(--accent-gold);
+  text-decoration: none;
+  font-size: 16px;
+  white-space: nowrap;
+}
+.site-title:hover,
+.site-title:focus { color: var(--bg-cream); }
+.site-title img { flex: none; width: 24px; height: 24px; image-rendering: pixelated; }
+.site-title__text { overflow: hidden; }
+
+.site-switch { grid-area: switch; }
+
+.site-nav {
+  grid-area: nav;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  min-width: 0;
+}
+.site-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 4px;
   color: var(--bg-cream);
-  border-bottom: 4px solid var(--frame-dark);
+  text-decoration: none;
+  font-size: 16px;
+  white-space: nowrap;
 }
-.md-tabs__list { padding: 4px 0 6px; }
-.md-tabs__item { height: auto; padding: 0 4px; }
-.md-tabs__link {
-  font-size: 11px;
-  opacity: 1;
-  margin: 0;
-  padding: 6px 11px;
-  color: var(--bg-cream);
-  border: 2px solid transparent;
-  border-radius: 0;
-}
-.md-tabs__link:hover,
-.md-tabs__link:focus { color: var(--accent-gold); }
-.md-tabs__item--active .md-tabs__link { color: var(--accent-gold); }
-.md-tabs__item--active .md-tabs__link::before {
+.site-nav a[aria-current="page"],
+.site-nav a:hover,
+.site-nav a:focus { color: var(--accent-gold); }
+.site-nav a[aria-current="page"]::before {
   content: "▶";
-  font-size: 11px;
+  font-size: 12px;
   margin-right: 4px;
-  vertical-align: 1px;
 }
 
-/* search box in header */
-@media screen and (min-width: 60em) {
-  .md-search__form {
+/* Square 44px icon buttons (LLM .search__toggle look) */
+.site-drawer,
+.site-search-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  color: var(--bg-cream);
+  border: 2px solid var(--frame-light);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.site-drawer:hover,
+.site-search-toggle:hover { color: var(--accent-gold); }
+.site-drawer svg,
+.site-search-toggle svg { flex: none; }
+.site-drawer { grid-area: drawer; justify-self: end; }
+.site-search-toggle { grid-area: search; justify-self: end; }
+.site-search-toggle__text { display: none; }
+.site-header .md-search { grid-area: search; justify-self: end; }
+
+/* LLM rule: <=400px the site name drops to 14px and the icon hides */
+@media screen and (max-width: 400px) {
+  .site-title { font-size: 14px; }
+  .site-title img { display: none; }
+}
+/* Narrowest phones (<370: 16+152 name+16+110 switch+16+44 search+16 > width):
+   keep the full site name on row 1, the switch moves to row 2 */
+@media screen and (max-width: 369px) {
+  .site-header__inner {
+    grid-template-areas:
+      "title  title search"
+      "switch .     drawer"
+      "nav    nav   nav";
+  }
+  .site-switch { justify-self: start; }
+}
+/* Phones: the title link already goes home, so the 首頁 item yields its slot
+   to the chapter-drawer button (keeps the nav on one row like LLM). */
+@media screen and (max-width: 767px) {
+  .site-nav__home { display: none !important; }
+}
+@media screen and (min-width: 768px) {
+  .site-header__inner {
+    grid-template-columns: auto auto minmax(0, 1fr) auto;
+    grid-template-areas:
+      "title switch . search"
+      "nav   nav    nav drawer";
+  }
+  /* Search placeholder box that opens Material's full-screen search (<960) */
+  .site-search-toggle {
+    width: 200px;
+    height: 40px;
+    justify-content: flex-start;
+    gap: 8px;
+    padding: 0 10px;
     background: var(--paper);
+    color: var(--ink-muted);
+    box-shadow: 2px 2px 0 var(--bg-dark);
+  }
+  .site-search-toggle:hover { color: var(--ink-strong); }
+  .site-search-toggle svg { width: 16px; height: 16px; }
+  .site-search-toggle__text { display: inline; font-size: 16px; }
+}
+/* >=960: Material's inline search form takes over the search slot */
+@media screen and (min-width: 60em) {
+  .site-search-toggle { display: none; }
+  .site-header .md-search { padding: 0; }
+  .site-header .md-search__inner,
+  [data-md-toggle=search]:checked ~ .md-header.site-header .md-search__inner {
+    float: none;
+    width: 200px;
+    padding: 0;
+    transition: none;
+  }
+  .site-header .md-search__form,
+  .site-header .md-search__form:hover,
+  [data-md-toggle=search]:checked ~ .md-header.site-header .md-search__form {
+    height: 40px;
+    background: var(--paper);
+    color: var(--ink-strong);
     border: 2px solid var(--frame-light);
     border-radius: 0;
+    box-shadow: 2px 2px 0 var(--bg-dark);
   }
-  .md-search__form:hover { background: var(--paper); }
-  .md-search__input { color: var(--ink-strong); }
-  .md-search__input::placeholder { color: var(--ink-muted); }
+  .site-header .md-search__input,
+  .site-header .md-search__suggest {
+    padding-left: 34px;
+    padding-right: 30px;
+    font-family: var(--font-pixel);
+    font-size: 16px;
+  }
+  .site-header .md-search__input { color: var(--ink-strong); }
+  .site-header .md-search__input::placeholder { color: var(--ink-muted); }
+  [data-md-toggle=search]:checked ~ .md-header.site-header .md-search__input::placeholder { color: transparent; }
+  .site-header .md-search__input + .md-search__icon,
+  [data-md-toggle=search]:checked ~ .md-header.site-header .md-search__input + .md-search__icon {
+    color: var(--ink-muted);
+  }
+  .site-header .md-search__icon[for=__search] { left: 8px; top: 8px; width: 20px; height: 20px; }
+  .site-header .md-search__options { top: 6px; right: 6px; }
+  /* Results drop down under the box, right-aligned, like LLM's .search__panel */
+  .site-header .md-search__output {
+    top: 46px;
+    left: auto;
+    right: 0;
+    width: min(520px, calc(100vw - 32px));
+  }
+  .site-header .md-search__scrollwrap { width: 100%; }
+  [data-md-toggle=search]:checked ~ .md-header.site-header .md-search__output {
+    border: 4px solid var(--frame-light);
+    outline: 2px solid var(--frame-dark);
+    box-shadow: 4px 4px 0 var(--bg-dark);
+  }
 }
+@media screen and (min-width: 76.25em) {
+  .site-drawer { display: none; }
+  .site-header__inner {
+    grid-template-columns: auto auto minmax(0, 1fr) auto auto;
+    grid-template-areas: "title switch . nav search";
+  }
+  .site-nav { flex-wrap: nowrap; }
+}
+
+/* Sticky offsets follow the taller (wrapped) header below 1220px */
+.md-sidebar { top: 116px; }
+.md-typeset :target { --md-scroll-margin: 132px; }
+@media screen and (max-width: 369px) {
+  .md-typeset :target { --md-scroll-margin: 184px; }
+}
+@media screen and (min-width: 76.25em) {
+  .md-sidebar { top: 64px; }
+  .md-typeset :target { --md-scroll-margin: 80px; }
+}
+
+/* Content starts 24px under the header, as LLM's <main> padding does */
+.md-main__inner { margin-top: 24px; }
+.md-content__inner { padding-top: 0; }
+.md-content__inner::before { height: 0; }
+
 .md-search__input::placeholder,
 .md-search__input ~ .md-search__icon { color: var(--ink-muted); }
 .md-search__scrollwrap { background: var(--paper); }
@@ -609,7 +783,6 @@ img.pixel { image-rendering: pixelated; image-rendering: -moz-crisp-edges; }
    clean 3x of the 11px design grid). */
 :root { --pixel-bold: 1px 0 0 currentColor; }
 
-.md-header__title,
 .md-typeset h1,
 .md-typeset h2,
 .md-typeset h3,
@@ -620,7 +793,6 @@ img.pixel { image-rendering: pixelated; image-rendering: -moz-crisp-edges; }
 }
 .md-typeset h1 { font-size: 38.5px; line-height: 1.3; }
 
-.md-tabs__link,
 .md-typeset .md-button,
 .md-typeset .admonition-title,
 .md-typeset details:not(.question) > summary,
@@ -633,24 +805,21 @@ img.pixel { image-rendering: pixelated; image-rendering: -moz-crisp-edges; }
   line-height: 1.6;
 }
 .md-typeset .md-button { padding: .45em 1.1em; }
-.md-tabs__link { opacity: 1; }
 
 /* ---------- Sibling-site switch (ML/DL <-> LLM) in the header ----------
-   Mirrors SystematicReviewRPG .site-switch. Contrast on #2d1f1a: cream 13.5:1;
-   current item is dark text on gold #d4a04d (6.8:1). */
+   Same box as LocalLLMRPG .site-switch (12px Cubic 11, 36px tall links,
+   10px side padding, " 冒險" suffix from 768px). Contrast on #2d1f1a:
+   cream 13.5:1; current item is dark text on gold #d4a04d (6.8:1). */
 .site-switch {
   display: inline-flex;
-  flex: none;
-  align-self: center;
-  margin: 0 .4rem;
   border: 2px solid var(--frame-light);
   font-size: 12px;
 }
 .site-switch a {
   display: inline-flex;
   align-items: center;
-  min-height: 32px;
-  padding: 0 8px;
+  min-height: 36px;
+  padding: 0 10px;
   color: var(--bg-cream);
   text-decoration: none;
   white-space: nowrap;
@@ -659,4 +828,7 @@ img.pixel { image-rendering: pixelated; image-rendering: -moz-crisp-edges; }
 .site-switch a[aria-current="true"] { background: var(--accent-gold); color: var(--bg-dark); }
 .site-switch a:not([aria-current="true"]):hover,
 .site-switch a:not([aria-current="true"]):focus-visible { color: var(--accent-gold); }
-.site-switch a:focus-visible { outline: 2px solid var(--accent-gold); outline-offset: 1px; }
+.site-switch__long { display: none; }
+@media screen and (min-width: 768px) {
+  .site-switch__long { display: inline; }
+}

@@ -1,74 +1,53 @@
 {#-
-  This file was automatically generated - do not edit
+  med-study-rpg site header. Replaces Material's header + tabs bar so the
+  chrome matches the sister Astro site (LocalLLMRPG BaseLayout .site-header):
+  [icon + site name][ML/DL | LLM switch] ... [flat nav][search]
+  Material hooks kept: .md-header + data-md-component="header" (sticky offset
+  for sidebars), label[for=__drawer] (mobile drawer), label[for=__search] and
+  partials/search.html (Material search). Layout lives in extra.css.
 -#}
-{% set class = "md-header" %}
-{% if "navigation.tabs.sticky" in features %}
-  {% set class = class ~ " md-header--shadow md-header--lifted" %}
-{% elif "navigation.tabs" not in features %}
-  {% set class = class ~ " md-header--shadow" %}
-{% endif %}
-<header class="{{ class }}" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="{{ lang.t('header') }}">
-    <a href="{{ config.extra.homepage | d(nav.homepage.url, true) | url }}" title="{{ config.site_name | e }}" class="md-header__button md-logo" aria-label="{{ config.site_name }}" data-md-component="logo">
-      {% include "partials/logo.html" %}
+{% macro nav_href(nav_item) -%}
+  {%- if nav_item.children -%}
+    {{- nav_href(nav_item.children | first) -}}
+  {%- else -%}
+    {{- nav_item.url | url -}}
+  {%- endif -%}
+{%- endmacro %}
+<header class="md-header site-header" data-md-component="header">
+  <div class="site-header__inner">
+    <a class="site-title" href="{{ config.extra.homepage | d(nav.homepage.url, true) | url }}">
+      <img src="{{ config.theme.logo | url }}" width="24" height="24" alt="" aria-hidden="true">
+      <span class="site-title__text">{{ config.site_name }}</span>
     </a>
-    <label class="md-header__button md-icon" for="__drawer">
-      {% set icon = config.theme.icon.menu or "material/menu" %}
-      {% include ".icons/" ~ icon ~ ".svg" %}
-    </label>
-    <div class="md-header__title" data-md-component="header-title">
-      <div class="md-header__ellipsis">
-        <div class="md-header__topic">
-          <span class="md-ellipsis">
-            {{ config.site_name }}
-          </span>
-        </div>
-        <div class="md-header__topic" data-md-component="header-topic">
-          <span class="md-ellipsis">
-            {% if page.meta and page.meta.title %}
-              {{ page.meta.title }}
-            {% else %}
-              {{ page.title }}
-            {% endif %}
-          </span>
-        </div>
-      </div>
-    </div>
     {#- med-study-rpg sibling switch: ML/DL (this site) <-> LLM -#}
     <nav class="site-switch" aria-label="姊妹站切換">
-      <a href="/ml/" aria-current="true" title="醫學生的機器學習入門（ML/DL）">ML/DL</a>
-      <a href="/local-llm/" title="本地 LLM 冒險">LLM</a>
+      <a href="/ml/" aria-current="true" title="ML/DL 冒險（本站）">ML/DL<span class="site-switch__long"> 冒險</span></a>
+      <a href="/local-llm/" title="本地 LLM 冒險">LLM<span class="site-switch__long"> 冒險</span></a>
     </nav>
-    {% if config.theme.palette %}
-      {% if not config.theme.palette is mapping %}
-        {% include "partials/palette.html" %}
-      {% endif %}
-    {% endif %}
-    {% if not config.theme.palette is mapping %}
-      {% include "partials/javascripts/palette.html" %}
-    {% endif %}
-    {% if config.extra.alternate %}
-      {% include "partials/alternate.html" %}
-    {% endif %}
+    <nav class="site-nav" aria-label="主導覽">
+      {% for nav_item in nav.items %}
+        <a href="{{ nav_href(nav_item) }}"{% if nav_item.active %} aria-current="page"{% endif %}{% if loop.first %} class="site-nav__home"{% endif %}>{{ nav_item.title }}</a>
+      {% endfor %}
+    </nav>
+    <label class="site-drawer" for="__drawer" title="章節目錄" aria-label="章節目錄">
+      <svg width="20" height="20" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true">
+        <rect x="2" y="3" width="12" height="2" fill="currentColor" />
+        <rect x="2" y="7" width="12" height="2" fill="currentColor" />
+        <rect x="2" y="11" width="12" height="2" fill="currentColor" />
+      </svg>
+    </label>
     {% if "material/search" in config.plugins %}
       {% set search = config.plugins["material/search"] | attr("config") %}
       {% if search.enabled %}
-        <label class="md-header__button md-icon" for="__search">
-          {% set icon = config.theme.icon.search or "material/magnify" %}
-          {% include ".icons/" ~ icon ~ ".svg" %}
+        <label class="site-search-toggle" for="__search" title="搜尋" aria-label="搜尋">
+          <svg width="20" height="20" viewBox="0 0 16 16" shape-rendering="crispEdges" aria-hidden="true">
+            <circle cx="6.5" cy="6.5" r="4.5" fill="none" stroke="currentColor" stroke-width="2" />
+            <path d="M10 10l5 5" stroke="currentColor" stroke-width="2" fill="none" />
+          </svg>
+          <span class="site-search-toggle__text">搜尋</span>
         </label>
         {% include "partials/search.html" %}
       {% endif %}
     {% endif %}
-    {% if config.repo_url %}
-      <div class="md-header__source">
-        {% include "partials/source.html" %}
-      </div>
-    {% endif %}
-  </nav>
-  {% if "navigation.tabs.sticky" in features %}
-    {% if "navigation.tabs" in features %}
-      {% include "partials/tabs.html" %}
-    {% endif %}
-  {% endif %}
+  </div>
 </header>
