@@ -57,7 +57,11 @@
   --violet-bg: #f1e9f6;
 
   --font-pixel: "Cubic 11", "Noto Sans TC", "PingFang TC", sans-serif;
-  --font-body: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+  /* UI chrome (nav, TOC, tables, demos, footer) stays sans; long-form reading
+     text uses the sister sites' serif stack (--font-legible). */
+  --font-ui: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+  --font-legible: "Noto Serif TC", "Source Han Serif TC", "PingFang TC", "Microsoft JhengHei", Georgia, serif;
+  --font-body: var(--font-legible);
   --md-text-font: "Noto Sans TC";
 
   /* Material tokens */
@@ -100,7 +104,7 @@
   --md-mermaid-edge-color: var(--frame-dark);
   --md-mermaid-label-bg-color: var(--bg-cream);
   --md-mermaid-label-fg-color: var(--ink-strong);
-  --md-mermaid-font-family: var(--font-body);
+  --md-mermaid-font-family: var(--font-ui);
 }
 
 body { background: var(--bg-cream); }
@@ -130,9 +134,21 @@ body { background: var(--bg-cream); }
 .md-typeset {
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
-  line-height: 1.8;
+  line-height: 1.85;
   color: var(--ink-body);
 }
+/* Reading column: 17px serif (sister .prose); admonition text up from
+   Material's 12.8px, which is too thin in a serif face. */
+.md-content .md-typeset { font-size: .85rem; }
+/* keep code blocks at Material's original size (pre 16px -> code 13.6px) despite the larger body */
+.md-content .md-typeset pre { font-size: .8rem; }
+.md-content .md-typeset .admonition,
+.md-content .md-typeset details { font-size: .72rem; }
+/* UI-ish blocks keep the sans face (sister sites use --font-ui for tables). */
+.md-typeset table:not([class]),
+.md-typeset .demo-box,
+.md-typeset .chapter-meta,
+.md-footer-meta.md-typeset { font-family: var(--font-ui); }
 .md-typeset strong { color: var(--ink-strong); }
 .md-typeset a { text-underline-offset: 2px; }
 .md-typeset a:hover { color: var(--accent-leaf-ink); text-decoration: underline; }
@@ -558,7 +574,7 @@ img.pixel { image-rendering: pixelated; image-rendering: -moz-crisp-edges; }
 
 /* Quiz questions are full sentences: keep the pixel frame but use the reading font. */
 .md-typeset details.question > summary {
-  font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  font-family: var(--font-ui);
   -webkit-font-smoothing: auto;
   font-size: .78rem;
   font-weight: 600;
