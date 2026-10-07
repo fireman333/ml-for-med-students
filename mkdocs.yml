@@ -100,6 +100,7 @@ nav:
       - 14 心電圖與資料洩漏: chapters/14-ecg.md
       - 15 注意力機制與 Transformer: chapters/15-transformer.md
       - 16 自編碼器與生成模型: chapters/16-generative.md
+      - 專欄：Jev 與 Laya: chapters/column-jev-laya.md
   - 附錄:
       - 資料集一覽: appendix/datasets.md
       - 中英術語對照: appendix/glossary.md

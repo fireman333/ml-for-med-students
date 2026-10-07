@@ -243,6 +243,12 @@
 | 幻覺 | hallucination | LLM 產生通順、篤定但與事實不符的內容，例如不存在的文獻。 |
 | 溫度 | temperature | 生成時調整 softmax 分布尖或平的參數；越高越多樣也越易離題。 |
 | 資料汙染 | data contamination | 評估用的題目已出現在模型訓練資料中，使成績虛高。 |
+| 自迴歸 | autoregressive | 每次只預測下一個 token、接回輸入再預測下一個的生成方式，ChatGPT 類 LLM 即是。 |
+| 非自迴歸 | non-autoregressive | 不依序一個接一個生成，而是平行產生全部輸出；例如同時輸出整句的翻譯模型，或直接輸出各選項機率的決策模型。 |
+| 前向傳遞 | forward pass | 輸入從第一層算到輸出層的一次計算；預測時只需前向傳遞，不做反向傳播。 |
+| 期望校準誤差 | expected calibration error（ECE） | 把預測依信心分組，比較各組平均信心與實際答對率的差距再加權平均；越小越好。 |
+| 溫度縮放 | temperature scaling | 把 softmax 前的分數除以一個在驗證資料上擬合的溫度，用來校正過度自信，不改變排序。 |
+| 開放權重 | open weights | 模型參數檔公開可下載、可自架；授權條款仍要另外看。 |
 
 ## 程式與工具
 

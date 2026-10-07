@@ -131,6 +131,12 @@
 
     只用正常心搏訓練自編碼器，以重建誤差找出可疑心跳，再概覽 VAE、GAN 與擴散模型。
 
+-   :material-newspaper-variant-outline:{ .lg .middle } __[專欄　不寫字的語言模型：Jev 與 Laya](chapters/column-jev-laya.md)__
+
+    ---
+
+    不是所有語言模型都是聊天機器人：一次前向傳遞直接輸出選項機率的決策模型，以及「校準機率」為什麼要自己再驗。
+
 </div>
 
 ## 學習路徑

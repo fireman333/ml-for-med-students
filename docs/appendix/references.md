@@ -118,6 +118,20 @@
 | PhysioBank, PhysioToolkit, and PhysioNet: components of a new research resource for complex physiologic signals | Goldberger AL, Amaral LAN, Glass L, et al. | 2000 | Circulation 101(23):e215–e220（PhysioNet 要求的標準引用） | 期刊版權 | 14、16 |
 | PTB-XL, a large publicly available electrocardiography dataset | Wagner P, Strodthoff N, Bousseljot RD, et al. | 2020 | Sci Data 7:154；[DOI 10.1038/s41597-020-0495-6](https://doi.org/10.1038/s41597-020-0495-6)；[PMID 32451379](https://pubmed.ncbi.nlm.nih.gov/32451379/)（PMC7248071） | CC BY 4.0 | 14（只在文字介紹 `strat_fold`，未下載） |
 
+### 專欄：Jev 與 Laya 的一手來源
+
+查證紀錄與每個數字的出處見 `research/refs/column_jev_laya.md`（2026-10-07 查證）。
+
+| 標題 | 作者／機構 | 年份 | 出處／識別碼 | 授權 | 章節 |
+|---|---|---|---|---|---|
+| Introducing System One Models & Jev | Almeida D（TypeSafe AI） | 2026 | [官方部落格](https://typesafe.ai/blog/introducing-system-one-models-and-jev)（2026-09-15） | 官方網站；只引用（開發者自報） | 專欄 |
+| TypeSafe 文件：Introduction、Models、Jev 1.13 jaggedness | TypeSafe AI | 2026 | [docs.typesafe.ai](https://docs.typesafe.ai/introduction)；[Models](https://docs.typesafe.ai/models)；[Jaggedness](https://docs.typesafe.ai/model-jaggedness/jev-1.13) | 官方文件；只引用（開發者自報） | 專欄 |
+| Laya model card | Convai Innovations | 2026 | [Hugging Face convaiinnovations/laya](https://huggingface.co/convaiinnovations/laya)；[GitHub](https://github.com/NandhaKishorM/laya) | 模型與程式碼 Apache-2.0；只引用（開發者自報） | 專欄 |
+| jev-benchmarks | AbdelStark | 2026 | [GitHub](https://github.com/AbdelStark/jev-benchmarks) | Apache-2.0；只引用（第三方，未經同儕審查） | 專欄 |
+| DMB: decision-model benchmark | nibzard | 2026 | [GitHub](https://github.com/nibzard/decision-model-benchmark) | 只引用（第三方，未經同儕審查） | 專欄 |
+| JevBench（v1.2.2 加入 Laya 英文版） | Standhartinger F（Benchmark Heaven） | 2026 | [GitHub](https://github.com/fstandhartinger/jevbench)：`results/v1.2/additions/laya.json` | MIT；只引用（第三方，未經同儕審查） | 專欄 |
+| JevOut: Natural Context Can Flip Decision Models | Xu Z | 2026 | [arXiv 2609.30243](https://arxiv.org/abs/2609.30243) | arXiv 預印本；只引用結論（未經同儕審查） | 專欄 |
+
 ## 三、資料集來源
 
 各資料集的載入方式、樣本數、授權與已知問題，請見 **[資料集一覽](datasets.md)**，此處不重複。本站各章使用的資料集有：Breast Cancer Wisconsin（第 1、4、5、6、9、10、11 章）、Heart Failure Clinical Records（第 2、7、8 章）、Chronic Kidney Disease、Pima Indians Diabetes 與 WHO GHO API（第 3 章）、sklearn Diabetes（第 4、10 章）、Medical Abstracts TC Corpus（第 5 章）、Heart Disease Cleveland（第 7、10 章）、PneumoniaMNIST（第 9、12 章）、BloodMNIST（第 12 章）、BreastMNIST（第 13 章）、Gretel symptom_to_diagnosis（第 15 章）、CDC Diabetes Health Indicators（第 11 章）、MIT-BIH Arrhythmia Database（第 14、16 章，PhysioNet，ODC-By v1.0）。

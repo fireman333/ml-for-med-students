@@ -352,6 +352,7 @@ hist = model.fit(X_tr, y_tr, validation_split=0.15, epochs=60, batch_size=32, ve
 - [Singhal K, et al. Large language models encode clinical knowledge（Nature, 2023）](https://doi.org/10.1038/s41586-023-06291-2) — Med-PaLM 研究，以人類評估補足選擇題成績。
 - [Kung TH, et al. Performance of ChatGPT on USMLE（PLOS Digital Health, 2023）](https://doi.org/10.1371/journal.pdig.0000198) — ChatGPT 回答 USMLE 題目的早期研究。
 - [gretelai/symptom_to_diagnosis（Hugging Face）](https://huggingface.co/datasets/gretelai/symptom_to_diagnosis) — 本章資料集，Apache-2.0。
+- [專欄：不寫字的語言模型——Jev 與 Laya](column-jev-laya.md) — 不逐字生成、一次前向傳遞直接輸出選項機率的決策模型，可和本章的 `[CLS]`＋softmax 分類器對照閱讀。
 
 <script src="../../assets/js/demos/ch15-attention-data.js"></script>
 <script src="../../assets/js/demos/ch15-attention.js"></script>
