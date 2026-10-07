@@ -15,9 +15,9 @@
 {%- endmacro %}
 <header class="md-header site-header" data-md-component="header">
   <div class="site-header__inner">
-    <a class="site-title" href="{{ config.extra.homepage | d(nav.homepage.url, true) | url }}">
+    <a class="site-title" href="{{ config.extra.homepage | d(nav.homepage.url, true) | url }}" aria-label="{{ config.site_name }}（首頁）">
       <img src="{{ config.theme.logo | url }}" width="24" height="24" alt="" aria-hidden="true">
-      <span class="site-title__text">{{ config.site_name }}</span>
+      <span class="site-title__text">ML 入門</span>
     </a>
     {#- med-study-rpg sibling switch: ML/DL (this site) <-> LLM -#}
     <nav class="site-switch" aria-label="姊妹站切換">
