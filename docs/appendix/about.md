@@ -8,7 +8,7 @@ description: 關於醫學生的機器學習入門：網站目的、作者、AI �
 
 **醫學生的機器學習入門**是給醫學與生醫相關科系學生的機器學習教室：從臨床情境建立直覺，再用圖解、互動 demo 與可在 Google Colab 執行的 Python 實作，帶你看懂模型在做什麼、能做到什麼、哪裡容易出錯。全站 16 章分為基礎篇（01–11）與深度學習篇（12–16），所用資料集皆為公開資料。
 
-本站同屬 [med-study-rpg](https://med-study-rpg.com/) 系列學習網站，姊妹站有[本地 LLM 冒險](https://med-study-rpg.com/local-llm/)、[Systematic Review 冒險](https://med-study-rpg.com/systematic-review/)與[Meta-analysis 冒險](https://med-study-rpg.com/meta-analysis/)。
+本站同屬 [med-study-rpg](https://med-study-rpg.com/) 系列學習網站。
 
 ## 作者 { #author }
 
@@ -16,7 +16,7 @@ description: 關於醫學生的機器學習入門：網站目的、作者、AI �
 
 ## AI 生成聲明 { #ai-generated }
 
-本站內容由 AI（Claude，Anthropic）協助生成。作者負責設定主題、章節架構與驗收流程；每章的 notebook 都實際執行過，產圖腳本可重跑，網站以嚴格模式建置檢查。即使如此仍可能有錯誤，若發現問題，歡迎到 [GitHub Issues](https://github.com/fireman333/ml-for-med-students/issues) 回報。
+本站內容由 AI（Claude）協助生成，作者設定主題與架構並負責驗收；仍可能有錯誤，歡迎回報。本站的驗證方式：每章的 notebook 都實際執行過，產圖腳本可重跑，網站以嚴格模式建置檢查。若發現問題，歡迎到 [GitHub Issues](https://github.com/fireman333/ml-for-med-students/issues) 回報。
 
 ## 使用說明 { #disclaimer }
 

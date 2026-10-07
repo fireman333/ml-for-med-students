@@ -634,3 +634,29 @@ img.pixel { image-rendering: pixelated; image-rendering: -moz-crisp-edges; }
 }
 .md-typeset .md-button { padding: .45em 1.1em; }
 .md-tabs__link { opacity: 1; }
+
+/* ---------- Sibling-site switch (ML/DL <-> LLM) in the header ----------
+   Mirrors SystematicReviewRPG .site-switch. Contrast on #2d1f1a: cream 13.5:1;
+   current item is dark text on gold #d4a04d (6.8:1). */
+.site-switch {
+  display: inline-flex;
+  flex: none;
+  align-self: center;
+  margin: 0 .4rem;
+  border: 2px solid var(--frame-light);
+  font-size: 12px;
+}
+.site-switch a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 8px;
+  color: var(--bg-cream);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.site-switch a + a { border-left: 2px solid var(--frame-light); }
+.site-switch a[aria-current="true"] { background: var(--accent-gold); color: var(--bg-dark); }
+.site-switch a:not([aria-current="true"]):hover,
+.site-switch a:not([aria-current="true"]):focus-visible { color: var(--accent-gold); }
+.site-switch a:focus-visible { outline: 2px solid var(--accent-gold); outline-offset: 1px; }
